@@ -1,4 +1,5 @@
-﻿using Livraria.Models.ViewModels;
+﻿using Livraria.Models.Entities;
+using Livraria.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +22,11 @@ namespace Livraria.Data.Service
             using (var db = new LivrariaContext())
             {
                 var dados = db.Livros.ToArray();
-                yield return new LivroViewModel();
+
+                yield return new LivroViewModel()
+                {
+                    //LivroNome = dados,
+                };
             }
             
         }

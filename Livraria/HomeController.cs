@@ -1,4 +1,5 @@
 ﻿using Livraria.Data.Service;
+using Livraria.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Livraria
@@ -14,7 +15,8 @@ namespace Livraria
 
         public IActionResult Index()
         {
-            return View();
+            var livros = _database.GetAll();
+            return View(livros);
         }
 
         public IActionResult Login()
