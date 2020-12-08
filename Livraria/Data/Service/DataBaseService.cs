@@ -17,23 +17,20 @@ namespace Livraria.Data.Service
             return;
         }
 
-        public IEnumerable<LivroViewModel> GetAll()
+        public IEnumerable<Usuario> GetAll()
         {
             using (var db = new LivrariaContext())
             {
-                var dados = db.Livros.ToArray();
+                var dados = db.Usuario.ToList();
 
-                yield return new LivroViewModel()
-                {
-                    //LivroNome = dados,
-                };
+                return dados;
             }
             
         }
 
-        public IEnumerable<LivroViewModel> GetAll(string param)
-        {
-            return;
-        }
+        //public IEnumerable<LivroViewModel> GetAll(string param)
+        //{
+        //    return;
+        //}
     }
 }

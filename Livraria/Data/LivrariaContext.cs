@@ -12,10 +12,11 @@ namespace Livraria.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Server=(MAQ-3077)\WOLTERSKLUWER;Database=Livraria_db;Integrated Security=True");
+                @"Server=MAQ-3077\WOLTERSKLUWER;Database=Livraria.db;Integrated Security=True");
         }
 
         public DbSet<Livro> Livros { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
     }
 }

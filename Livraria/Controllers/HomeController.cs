@@ -15,8 +15,8 @@ namespace Livraria
 
         public IActionResult Index()
         {
-            var livros = _database.GetAll();
-            return View(livros);
+            var usuarios = _database.GetAll();
+            return View(usuarios);
         }
 
         public IActionResult Login()
