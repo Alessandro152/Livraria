@@ -1,5 +1,7 @@
 ﻿using Livraria.Models.Entities;
+using Livraria.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Livraria.Data
 {
@@ -12,10 +14,11 @@ namespace Livraria.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Server=MAQ-3077\WOLTERSKLUWER;Database=Livraria.db;Integrated Security=True");
+                $@"Server={Environment.MachineName}\WOLTERSKLUWER;Database=Livraria.db;Integrated Security=True");
         }
 
-        public DbSet<Livro> Livros { get; set; }
+        public DbSet<Livro> Livro { get; set; }
+
         public DbSet<Usuario> Usuario { get; set; }
 
     }

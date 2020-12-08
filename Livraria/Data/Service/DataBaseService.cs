@@ -1,5 +1,7 @@
 ﻿using Livraria.Models.Entities;
 using Livraria.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,16 +23,17 @@ namespace Livraria.Data.Service
         {
             using (var db = new LivrariaContext())
             {
-                var dados = db.Usuario.ToList();
-
-                return dados;
+                return db.Usuario.ToList();
             }
             
         }
 
-        //public IEnumerable<LivroViewModel> GetAll(string param)
-        //{
-        //    return;
-        //}
+        public IEnumerable<Livro> GetAll(string livroNome)
+        {
+            using (var db = new LivrariaContext())
+            {
+                return db.Livro.Where(x => EF.Functions.Like(x.LivroNome, livroNome)).ToArray();
+            }
+        }
     }
 }
