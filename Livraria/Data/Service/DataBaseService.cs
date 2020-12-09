@@ -1,5 +1,4 @@
 ﻿using Livraria.Models.Entities;
-using Livraria.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -25,7 +24,25 @@ namespace Livraria.Data.Service
             {
                 return db.Usuario.ToList();
             }
-            
+        }
+
+        internal bool GetUser(string user, string password)
+        {
+            using (var db = new LivrariaContext())
+            {
+                try
+                {
+                    return db.Login.Where(x => x.Email == user && x.Password == password).Any();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    db.Dispose();
+                }
+            }
         }
 
         public IEnumerable<Livro> GetAll(string livroNome)

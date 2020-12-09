@@ -18,10 +18,5 @@ namespace Livraria
             var usuarios = _database.GetAll();
             return View(usuarios);
         }
-
-        public IActionResult Login()
-        {
-            return View();
-        }
     }
 }
