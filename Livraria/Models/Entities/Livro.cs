@@ -1,4 +1,6 @@
-﻿namespace Livraria.Models.Entities
+﻿using Microsoft.AspNetCore.Http;
+
+namespace Livraria.Models.Entities
 {
     public class Livro
     {

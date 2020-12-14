@@ -20,7 +20,7 @@ namespace Livraria.Data
         public DbSet<Livro> Livro { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Login> Login { get; set; }
-
+        public DbSet<UsuarioCadastro> UsuarioCadastro { get; set; }
 
     }
 }

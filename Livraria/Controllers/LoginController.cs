@@ -7,10 +7,10 @@ namespace Livraria.Controllers
     public class LoginController : Controller
     {
         private Login _login;
-        private readonly DataBaseService _services;
+        private readonly UserService _services;
         const string ERRO = "deu ruim";
 
-        public LoginController(DataBaseService services)
+        public LoginController(UserService services)
         {
             _services = services;
             _login = new Login()
@@ -25,26 +25,32 @@ namespace Livraria.Controllers
         }
 
         [HttpGet]
-        public IActionResult AutenticarUsuario(string user, string password)
+        public IActionResult AutenticarUsuario(Login dados)
         {
-            var result = _services.GetUser(user, password);
+            var result = _services.GetUser(dados.Email, dados.Password);
 
             if (!result)
             {
                 _login.UsuarioAutenticado = false;
+                return View(nameof(Login), _login);
             }
 
-            return View("Login",_login);
+            return RedirectToAction ("Index", "Livro", new Login() {UsuarioAutenticado = _login.UsuarioAutenticado});
+        }
+
+        public IActionResult CadastrarUsuario(UsuarioCadastro dados)
+        {
+            _services.SalvarCadastroUsuario(dados);
+            return View(nameof(Login));
         }
 
         [HttpPost]
-        public IActionResult CadastrarUsuario(string user, string password)
+        public IActionResult CadastrarUsuario(Login dados)
         {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult RecuperarSenha(string user)
+        public IActionResult RecuperarSenha()
         {
             return View();
         }
