@@ -1,13 +1,16 @@
-﻿using Livraria.Models.Entities;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Livraria.Controllers
 {
     public class LivroController : Controller
     {
-        public IActionResult Index(Login usuarioLogado)
+        public IActionResult Index()
         {
-            if (!usuarioLogado.UsuarioAutenticado)
+            var logado = TempData["usuarioLogado"];
+            TempData.Keep("usuarioLogado");
+
+            if (logado == null || Convert.ToBoolean(logado) == false)
             {
                 return RedirectToAction("Login", "Login");
             }

@@ -8,7 +8,6 @@ namespace Livraria.Controllers
     {
         private Login _login;
         private readonly UserService _services;
-        const string ERRO = "deu ruim";
 
         public LoginController(UserService services)
         {
@@ -29,13 +28,15 @@ namespace Livraria.Controllers
         {
             var result = _services.GetUser(dados.Email, dados.Password);
 
+            TempData["usuarioLogado"] = result;
+
             if (!result)
             {
                 _login.UsuarioAutenticado = false;
                 return View(nameof(Login), _login);
             }
 
-            return RedirectToAction ("Index", "Livro", new Login() {UsuarioAutenticado = _login.UsuarioAutenticado});
+            return RedirectToAction ("Index", "Livro");
         }
 
         public IActionResult CadastrarUsuario(UsuarioCadastro dados)
@@ -53,6 +54,12 @@ namespace Livraria.Controllers
         public IActionResult RecuperarSenha()
         {
             return View();
+        }
+
+        public IActionResult Logout()
+        {
+            TempData["usuarioLogado"] = false;
+            return View("Home", "Index");
         }
     }
 }

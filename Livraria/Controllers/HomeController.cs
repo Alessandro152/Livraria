@@ -9,7 +9,7 @@ namespace Livraria
     public class HomeController : Controller
     {
         private readonly DataBaseService _database;
-        private readonly IEnumerable<Livro> _livro;
+        private IEnumerable<Livro> _livro;
 
         public HomeController(DataBaseService dataBase)
         {
@@ -19,6 +19,7 @@ namespace Livraria
 
         public IActionResult Index()
         {
+            _livro = _database.GetAll();
             return View(_livro);
         }
     }

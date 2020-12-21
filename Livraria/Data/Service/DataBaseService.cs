@@ -18,11 +18,11 @@ namespace Livraria.Data.Service
             return;
         }
 
-        public IEnumerable<Usuario> GetAll()
+        public IEnumerable<Livro> GetAll()
         {
             using (var db = new LivrariaContext())
             {
-                return db.Usuario.ToList();
+                return db.Livro.ToList();
             }
         }
 
