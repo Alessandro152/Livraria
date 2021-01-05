@@ -11,24 +11,9 @@ namespace Livraria.Data.Service
             using (var db = new LivrariaContext())
             {
                 try
-                {
-                    var login = new UsuarioCadastro
-                    {
-                        Login = new Login()
-                        {
-                            Email = dados.Login.Email,
-                            Password = dados.Login.Password
-                        },
-
-                        Usuario = new Usuario()
-                        {
-                            UsuarioNome = dados.Usuario.UsuarioNome,
-                            UsuarioEndereco = dados.Usuario.UsuarioEndereco,
-                            UsuarioTelefone = dados.Usuario.UsuarioTelefone
-                        }
-                    };
-
-                    db.UsuarioCadastro.Add(login);
+                {                    
+                    db.Login.Add(dados.Login);
+                    db.Usuario.Add(dados.Usuario);
                     db.SaveChanges();
                 }
                 catch (Exception ex)
@@ -48,7 +33,7 @@ namespace Livraria.Data.Service
             {
                 try
                 {
-                    return db.Login.Where(x => x.Email == user && x.Password == password).Any();
+                    return db.Login.Where(x => x.UserMail == user && x.UserPassword == password).Any();
                 }
                 catch (Exception ex)
                 {

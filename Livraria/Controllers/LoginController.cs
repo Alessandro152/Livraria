@@ -1,6 +1,7 @@
 ﻿using Livraria.Data.Service;
 using Livraria.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Livraria.Controllers
 {
@@ -12,41 +13,45 @@ namespace Livraria.Controllers
         public LoginController(UserService services)
         {
             _services = services;
-            _login = new Login()
-            {
-                UsuarioAutenticado = true
-            };
+            _login = new Login();
         }
 
         public IActionResult Login()
         {
-            return View(_login);
+            var logado = TempData["usuarioLogado"];
+
+            if (logado == null || Convert.ToBoolean(logado) == false)
+            {
+                return View(nameof(Login), _login);
+            }
+
+            return View("Livro", "Index");
         }
 
         [HttpGet]
         public IActionResult AutenticarUsuario(Login dados)
         {
-            var result = _services.GetUser(dados.Email, dados.Password);
+            var result = _services.GetUser(dados.UserMail, dados.UserPassword);
 
             TempData["usuarioLogado"] = result;
 
             if (!result)
             {
-                _login.UsuarioAutenticado = false;
                 return View(nameof(Login), _login);
             }
 
             return RedirectToAction ("Index", "Livro");
         }
 
+        [HttpPost]
         public IActionResult CadastrarUsuario(UsuarioCadastro dados)
         {
             _services.SalvarCadastroUsuario(dados);
             return View(nameof(Login));
         }
 
-        [HttpPost]
-        public IActionResult CadastrarUsuario(Login dados)
+        
+        public IActionResult CadastrarUsuario()
         {
             return View();
         }

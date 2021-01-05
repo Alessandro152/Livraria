@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace Livraria.Models.Entities
@@ -10,8 +11,7 @@ namespace Livraria.Models.Entities
     {
         [Key]
         public int LoginId { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public bool UsuarioAutenticado { get; set; }
+        public string UserMail { get; set; }
+        public string UserPassword { get; set; }
     }
 }

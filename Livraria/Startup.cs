@@ -37,7 +37,7 @@ namespace Livraria
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddScoped<DataBaseService>();
+            services.AddScoped<BookService>();
             services.AddScoped<UserService>();
         }
 

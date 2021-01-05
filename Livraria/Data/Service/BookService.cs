@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Livraria.Data.Service
 {
-    public class DataBaseService
+    public class BookService
     {
         public void Save()
         {

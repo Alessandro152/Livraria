@@ -5,6 +5,15 @@
 
 
 <div>
+    <h2>Confira o que há de melhor em nossa livraria online. Ela é sua, fique à vontade!</h2>
+
+    <p>
+        Na livraria Lumina procuramos oferecer o que há de melhor em literatura, biografias, manuais, entre outros. Somos apaixonados por leitura e sabemos que ela abre a imaginação
+        e nos trás sabedoria.
+
+        Confira abaixo alguns exemplos. Cria sua conta e tenha acesso aos conteúdos 100% gratuítos.
+    </p>
+
     @{
         int iContador = 0;
 
@@ -16,17 +25,18 @@
             }
             else
             {
-                <div>
-                    @Html.DisplayFor(m => item.LivroNome)
-                </div>
-                <div>
-                    @Html.DisplayFor(m => item.LivroPreco)
-                </div>
-                <div>
-                    @Html.DisplayFor(m => item.LivroAnoPublicacao)
+                <div class="card" style="width: 18rem; display: inline-grid; margin-right:20%; padding: 30px 40px;">
+                    <img class="card-img-top" src="https://lojasaraiva.vteximg.com.br/arquivos/ids/9214541-287-426/1006572913.jpg?v=637103902618330000" alt="Imagem de capa do card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: bold;">@item.LivroNome</h5>
+                        <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p>
+                        <p class="card-text">Preço - @item.LivroPreco</p>
+                        <p class="card-text">Ano de publicação - @item.LivroAnoPublicacao</p>
+                        <a href="#" class="btn btn-primary">Visitar</a>
+                    </div>
                 </div>
 
-                iContador = +1;
+                iContador++;
             }
 
         }

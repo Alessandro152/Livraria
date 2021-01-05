@@ -8,18 +8,47 @@ namespace Livraria
 {
     public class HomeController : Controller
     {
-        private readonly DataBaseService _database;
+        private readonly BookService _database;
         private IEnumerable<Livro> _livro;
 
-        public HomeController(DataBaseService dataBase)
+        public HomeController(BookService dataBase)
         {
             _database = dataBase;
-            _livro = new List<Livro>();
+            _livro = new List<Livro>()
+            {
+                new Livro
+                {
+                    LivroNome = "Peter Pan",
+                    LivroPreco = 29.99M,
+                    LivroAnoPublicacao = "1955"
+                },
+
+                new Livro
+                {
+                    LivroNome = "100 dias entre céu e mar",
+                    LivroPreco = 49.99M,
+                    LivroAnoPublicacao = "1989"
+                },
+
+                new Livro
+                {
+                    LivroNome = "As aventuras do ratinho detetive",
+                    LivroPreco = 49.99M,
+                    LivroAnoPublicacao = "1989"
+                },
+
+                new Livro
+                {
+                    LivroNome = "A cartomante",
+                    LivroPreco = 49.99M,
+                    LivroAnoPublicacao = "1989"
+                }
+            };
         }
 
         public IActionResult Index()
         {
-            _livro = _database.GetAll();
+           // _livro = _database.GetAll();
             return View(_livro);
         }
     }
