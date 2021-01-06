@@ -22,7 +22,7 @@ namespace Livraria.Data.Service
         {
             using (var db = new LivrariaContext())
             {
-                return db.Livro.ToList();
+                return db.Livros.ToList();
             }
         }
 
@@ -30,7 +30,7 @@ namespace Livraria.Data.Service
         {
             using (var db = new LivrariaContext())
             {
-                return db.Livro.Where(x => EF.Functions.Like(x.LivroNome, livroNome)).ToArray();
+                return db.Livros.Where(x => EF.Functions.Like(x.LivroNome, livroNome)).ToArray();
             }
         }
     }

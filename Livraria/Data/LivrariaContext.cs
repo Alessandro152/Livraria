@@ -17,7 +17,7 @@ namespace Livraria.Data
                 $@"Server={Environment.MachineName}\WOLTERSKLUWER;Database=Livraria.db;Integrated Security=True");
         }
 
-        public DbSet<Livro> Livro { get; set; }
+        public DbSet<Livro> Livros { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Login> Login { get; set; }
         public DbSet<UsuarioCadastro> UsuarioCadastro { get; set; }
