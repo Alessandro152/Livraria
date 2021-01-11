@@ -1,4 +1,5 @@
 ﻿using Livraria.Models.Entities;
+using Livraria.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,25 @@ namespace Livraria.Data.Service
 {
     public class BookService
     {
-        public void Save()
+        public bool GravarLivro(Livro dados)
         {
-            return;
+            using (var db = new LivrariaContext())
+            {
+                try
+                {
+                    db.Livros.Add(dados);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    db.Dispose();
+                }
+            }      
         }
 
         public void Delete()
@@ -22,7 +39,18 @@ namespace Livraria.Data.Service
         {
             using (var db = new LivrariaContext())
             {
-                return db.Livros.ToList();
+                try
+                {
+                    return db.Livros.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    db.Dispose();
+                }
             }
         }
 
@@ -30,7 +58,18 @@ namespace Livraria.Data.Service
         {
             using (var db = new LivrariaContext())
             {
-                return db.Livros.Where(x => EF.Functions.Like(x.LivroNome, livroNome)).ToArray();
+                try
+                {
+                    return db.Livros.Where(x => EF.Functions.Like(x.LivroNome, livroNome)).ToArray();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    db.Dispose();
+                }                
             }
         }
     }

@@ -21,6 +21,5 @@ namespace Livraria.Data
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Login> Login { get; set; }
         public DbSet<UsuarioCadastro> UsuarioCadastro { get; set; }
-
     }
 }

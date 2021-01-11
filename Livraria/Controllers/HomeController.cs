@@ -1,8 +1,5 @@
 ﻿using Livraria.Data.Service;
-using Livraria.Models.Entities;
-using Livraria.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace Livraria
 {
@@ -17,7 +14,7 @@ namespace Livraria
 
         public IActionResult Index()
         {
-            var _livro = _database.GetAll();
+            dynamic _livro = _database.GetAll();
             return View(_livro);
         }
     }

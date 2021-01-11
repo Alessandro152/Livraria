@@ -1,0 +1,34 @@
+﻿@model Livraria.Models.Entities.Livro
+@{
+    ViewData["Title"] = "CadastrarLivro";
+}
+
+<h2>CadastrarLivro</h2>
+
+<form action="CadastrarLivro" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Nome do livro</label>
+            @Html.TextBoxFor(m => m.LivroNome, new { @class = "form-control", id = "livroNome", autocomplete = "off" })
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputPassword4">Preço do Livro R$</label>
+            @Html.TextBoxFor(m => m.LivroPreco, new { @class = "form-control", id = "livroPreco", autocomplete = "off" })
+        </div>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="inputAddress">Ano de Publicação</label>
+        @Html.TextBoxFor(m => m.LivroAnoPublicacao, new { @class = "form-control", id = "anoPublicacao", autocomplete = "off" })
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputAddress2">Editora</label>
+            @Html.TextBoxFor(m => m.LivroEditora, new { @class = "form-control", id = "editora", autocomplete = "off" })
+        </div>
+        <div class="form-group col-md-12">
+            <label>Resumo</label>
+            @Html.TextAreaFor(m => m.LivroSinopse, new { @class = "form-control", id = "livroResumo", autocomplete = "off" })
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Entrar</button>
+</form>

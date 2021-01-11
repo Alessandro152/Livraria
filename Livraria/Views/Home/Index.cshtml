@@ -25,13 +25,15 @@
             }
             else
             {
-                <div class="card" style="width: 18rem; display: inline-grid; margin-right:20%; padding: 30px 40px;">
+                <div class="card" style="width: 18rem; display: inline-grid; margin-right:15%; padding: 30px 40px;">
                     <img class="card-img-top" src="https://lojasaraiva.vteximg.com.br/arquivos/ids/9214541-287-426/1006572913.jpg?v=637103902618330000" alt="Imagem de capa do card">
                     <div class="card-body">
                         <h5 class="card-title" style="font-weight: bold;">@item.LivroNome</h5>
-                        <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p>
-                        <p class="card-text">Preço - @item.LivroPreco</p>
+                        <p class="card-text">Código do livro - 000 @item.LivroId</p>
+                        <p class="card-text">@item.LivroSinopse</p>
+                        <p class="card-text">Preço R$ - @item.LivroPreco</p>
                         <p class="card-text">Ano de publicação - @item.LivroAnoPublicacao</p>
+                        <p class="card-text">Editora - @item.LivroEditora</p>
                         <a href="#" class="btn btn-primary">Visitar</a>
                     </div>
                 </div>

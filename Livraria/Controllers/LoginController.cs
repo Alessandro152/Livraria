@@ -25,7 +25,7 @@ namespace Livraria.Controllers
                 return View(nameof(Login), _login);
             }
 
-            return View("Livro", "Index");
+            return RedirectToAction("Index", "Livro");
         }
 
         [HttpGet]
@@ -64,7 +64,7 @@ namespace Livraria.Controllers
         public IActionResult Logout()
         {
             TempData["usuarioLogado"] = false;
-            return View("Home", "Index");
+            return RedirectToAction ("Index", "Home");
         }
     }
 }
